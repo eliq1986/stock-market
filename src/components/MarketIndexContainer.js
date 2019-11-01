@@ -1,14 +1,10 @@
 import React from 'react';
+import style from './MarketIndexContainer.module.css';
 
 const MarketIndexContainer = () => {
   return (
-    <div>
-      <div>
-      DOW
-      </div>
-      <div>
-      NASDAQ
-      </div>
+    <div className={style.indexContainer}>
+    NASDAQ DOW
     </div>
   )
 }
