@@ -1,11 +1,12 @@
 import React from 'react';
 import style from './StockCard.module.css';
 
-const StockCard = () => {
+const StockCard = (props) => {
+  const {price, symbol} = props.stock;
   return (
     <div className={style.StockCard}>
-      <p>Price: 123</p>
-      <p>Company: DIS</p>
+      <p>Price: {price}</p>
+      <p>Company: {symbol}</p>
     </div>
   )
 }

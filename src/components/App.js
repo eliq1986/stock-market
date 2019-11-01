@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import StockCardContainer from './StockCardContainer';
 import MarketIndexContainer from './MarketIndexContainer';
-
-const apiKey = "VnEM1HPcGFuWN6emPLEG9BKxn2xxyeXBRE1eNtxYqhdd9ir8fLyt60BtdCsK";
-
+import { apiKey } from '../config.js';
 
 class App extends Component {
 
@@ -22,15 +20,15 @@ state = {
 }
 
 
-// componentDidMount() {
-//  this.fetchStockData().then((data)=> {
-//    this.setState({
-//      stocks: data
-//    })
-//    console.log(this.state.stocks.data)
-//  })
-//
-// }
+componentDidMount() {
+ this.fetchStockData().then((data)=> {
+   this.setState({
+     stocks: data
+   })
+   console.log(this.state.stocks.data)
+ })
+
+}
 
 
 render() {
@@ -38,7 +36,7 @@ render() {
     <div>
     <Header />
     <MarketIndexContainer />
-    <StockCardContainer />
+    <StockCardContainer stockData={this.state.stocks}/>
     </div>
   )
 }
