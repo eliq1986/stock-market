@@ -1,8 +1,14 @@
 .StockCard {
-  width: 90%;
-  padding: 16px;
-  background: #32CD32;
-  margin: 10px auto;
+  padding: 20px;
+  background: transparent;
+  margin: 20px auto;
   border-radius: 10px;
+  border: 2px solid white;
+  height: 100px;
+  width:90%;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+
 
 }

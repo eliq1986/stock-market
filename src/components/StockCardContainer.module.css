@@ -1,3 +1,17 @@
 .StockCardContainer {
-  display: column;
+  display: flex;
+  flex-direction: column;
+  background: url("/images/newyork.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding: 2em;
+}
+
+
+
+
+@media(min-width: 900px) {
+  .StockCardContainer {
+    flex-direction: row;
+
+  }
 }
