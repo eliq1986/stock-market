@@ -13,5 +13,5 @@ Built utilizing mobile first approach.
 	- NPM
 		- Create-React-App
 
-		![Screen Shot 2019-11-02 at 12 40 16 PM](https://user-images.githubusercontent.com/6277603/68076163-5f620500-fd6e-11e9-97e2-8845e2780e0b.png)
-		![Screen Shot 2019-11-02 at 12 40 24 PM](https://user-images.githubusercontent.com/6277603/68076164-5ffa9b80-fd6e-11e9-8e4d-f7fe22d2382e.png)
+![Screen Shot 2019-11-02 at 12 40 16 PM](https://user-images.githubusercontent.com/6277603/68076268-b1eff100-fd6f-11e9-9424-aebbcfb17b79.png)
+![Screen Shot 2019-11-02 at 12 40 24 PM](https://user-images.githubusercontent.com/6277603/68076269-b1eff100-fd6f-11e9-95a6-604925dbce64.png)
