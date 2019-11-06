@@ -1,11 +1,11 @@
 import React from 'react';
-import StockCard from './StockCard';
+import StockCard from './StockCard/StockCard';
 import style from './StockCardContainer.module.css';
 
 const StockCardContainer = (props) => {
   if(props.stockData.length === 0) {
     return (
-      <h3>Loading.....</h3>
+      <div class="ui active centered inline loader"></div>
     );
 
   }

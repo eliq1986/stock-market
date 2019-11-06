@@ -1,4 +1,4 @@
-.NewsArticle {
+.newsArticle {
   width: 90%;
   margin: auto;
   font-size: 1.1em;
@@ -6,4 +6,9 @@
 
 .newsImage {
   width: 100%;
+}
+
+
+hr {
+  margin-bottom: 1em;
 }

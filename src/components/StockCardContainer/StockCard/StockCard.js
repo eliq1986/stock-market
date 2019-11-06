@@ -9,7 +9,7 @@ const StockCard = (props) => {
 
   if(percentChange === "-") {
     return (
-      <div className={style.StockCard}>
+      <div className={style.stockCard}>
         <p>Price: {price} <i class="angle down icon"></i></p>
         <p>Company: {symbol}</p>
 
@@ -18,7 +18,7 @@ const StockCard = (props) => {
   }
 
   return (
-    <div className={style.StockCard}>
+    <div className={style.stockCard}>
       <p>Price: {price} <i class="angle up icon"></i></p>
       <p>Company: {symbol}</p>
 

@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import StockCardContainer from './StockCardContainer';
-import MarketIndexContainer from './MarketIndexContainer';
-import NewsArticlesContainer from './NewsArticlesContainer';
-import { apiKey } from '../config.js';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+
+
+import StockCardContainer from './StockCardContainer/StockCardContainer';
+import MarketIndexContainer from './MarketIndex/MarketIndexContainer';
+import NewsArticlesContainer from './NewsArticlesContainer/NewsArticlesContainer';
+
+
+import { stockApiKey, newsApiKey } from '../config.js';
 
 class App extends Component {
 
-
+// set state
   state = {
     stocks: [],
     newsArticles: []
@@ -15,20 +20,20 @@ class App extends Component {
 
 
 fetchStockData = async () => {
-  const response = await fetch(`https://api.worldtradingdata.com/api/v1/stock?symbol=DIS,AMZN,ANET&api_token=${apiKey}`)
+  const response = await fetch(`https://api.worldtradingdata.com/api/v1/stock?symbol=DIS,AMZN,ANET&api_token=${stockApiKey}`)
   const data = response.json();
   return data;
 }
 
 fetchNewsData = async() => {
-  const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=3d49048756f34fb08ea7c4c6a751e5b5")
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
   const data = response.json();
   return data;
 }
 
 
 componentDidMount() {
-
+  
   Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
     this.setState({
       stocks: data[0],
@@ -46,6 +51,7 @@ render() {
     <MarketIndexContainer />
     <StockCardContainer  stockData={this.state.stocks}/>
     <NewsArticlesContainer newsData={this.state.newsArticles} />
+    <Footer />
     </div>
   )
 }
