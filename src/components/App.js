@@ -34,12 +34,12 @@ fetchNewsData = async() => {
 
 componentDidMount() {
 
-  // Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
-  //   this.setState({
-  //     stocks: data[0],
-  //     newsArticles: data[1].articles.slice(0, 6)
-  //   })
-  // })
+  Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
+    this.setState({
+      stocks: data[0],
+      newsArticles: data[1].articles.slice(0, 6)
+    })
+  })
 
 }
 
