@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-
+import Form from './Form/Form';
+import style from './App.module.css';
 
 import StockCardContainer from './StockCardContainer/StockCardContainer';
-import MarketIndexContainer from './MarketIndex/MarketIndexContainer';
 import NewsArticlesContainer from './NewsArticlesContainer/NewsArticlesContainer';
 
 
@@ -33,27 +33,47 @@ fetchNewsData = async() => {
 
 
 componentDidMount() {
-  
-  Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
-    this.setState({
-      stocks: data[0],
-      newsArticles: data[1].articles.slice(0, 6)
-    })
-  })
+
+  // Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
+  //   this.setState({
+  //     stocks: data[0],
+  //     newsArticles: data[1].articles.slice(0, 6)
+  //   })
+  // })
 
 }
 
 
+
+
 render() {
-  return(
-    <div>
-    <Header />
-    <MarketIndexContainer />
-    <StockCardContainer  stockData={this.state.stocks}/>
-    <NewsArticlesContainer newsData={this.state.newsArticles} />
-    <Footer />
+let loading = null;
+
+
+  if(!this.state.stocks.length && !this.state.newsArticles.length ) {
+      loading = (
+      <div className={style.centerSpinner}>
+        <div class="ui active centered inline loader" ></div>
+      </div>
+      );
+  } else {
+    loading = (
+      <div>
+      <StockCardContainer  stockData={this.state.stocks}/>
+      <NewsArticlesContainer newsData={this.state.newsArticles} />
+      </div>
+    );
+}
+
+  return (
+    <div className={style.container}>
+      <Header />
+      <main className={style.mainContent}>
+        {loading}
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
 
 }

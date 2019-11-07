@@ -5,3 +5,7 @@ body {
 .centerText {
   text-align: center;
 }
+
+input:hover {
+  cursor: pointer;
+}
