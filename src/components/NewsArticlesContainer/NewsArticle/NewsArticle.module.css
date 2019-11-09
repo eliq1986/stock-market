@@ -12,3 +12,8 @@
 hr {
   margin-bottom: 1em;
 }
+
+
+a[target] {
+  padding: 1em;
+}

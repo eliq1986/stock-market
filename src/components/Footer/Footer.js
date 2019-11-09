@@ -7,7 +7,7 @@ const Footer = () => {
   return (
      <footer className={style.footer}>
      {webData.map(website=> {
-      return <a href={website} target="_blank">{website.toUpperCase()}</a>
+      return <a href={website} key={website} target="_blank">{website.toUpperCase()}</a>
      })}
 
     </footer>

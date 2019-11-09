@@ -1,43 +1,63 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+// Container Components
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Form from './Form/Form';
+
+// css
 import style from './App.module.css';
 
+//
+import Spinner from './Spinner/Spinner';
 import StockCardContainer from './StockCardContainer/StockCardContainer';
 import NewsArticlesContainer from './NewsArticlesContainer/NewsArticlesContainer';
 
 
-import { stockApiKey, newsApiKey } from '../config.js';
+import { stockApiKey, newsApiKey, searchApiKey } from '../config.js';
+import {stockApiURL, newsApiURL, searchApiURL} from './api.js';
 
 class App extends Component {
 
 // set state
   state = {
     stocks: [],
-    newsArticles: []
+    newsArticles: [],
+    searchedStock: null
   }
 
 
-fetchStockData = async () => {
-  const response = await fetch(`https://api.worldtradingdata.com/api/v1/stock?symbol=DIS,AMZN,ANET&api_token=${stockApiKey}`)
+// fetches stock data
+fetchApiData = async (apiUrl, apiKey) => {
+  const response = await fetch(apiUrl + apiKey);
   const data = response.json();
   return data;
 }
 
-fetchNewsData = async() => {
-  const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`)
+// fetches search stock index
+getSearchData = async(stockIndex, ) => {
+  const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockIndex}&apikey=${stockApiKey}`)
   const data = response.json();
   return data;
+}
+
+
+
+searchStock = (stockIndex) => {
+  this.getSearchData(stockIndex).then( data=> {
+    console.log(data);
+  })
 }
 
 
 componentDidMount() {
 
-  Promise.all([this.fetchStockData(), this.fetchNewsData()]).then( data => {
+  Promise.all([this.fetchApiData(stockApiURL, stockApiKey), this.fetchApiData(newsApiURL, newsApiKey)]).then( data => {
+    const [stocks, articles] = data;
     this.setState({
-      stocks: data[0],
-      newsArticles: data[1].articles.slice(0, 6)
+      stocks,
+      newsArticles: articles.articles.slice(0,6)
     })
   })
 
@@ -47,17 +67,16 @@ componentDidMount() {
 
 
 render() {
-let loading = null;
+
+let mainContent= null;
 
 
   if(!this.state.stocks.length && !this.state.newsArticles.length ) {
-      loading = (
-      <div className={style.centerSpinner}>
-        <div class="ui active centered inline loader" ></div>
-      </div>
+      mainContent = (
+        <Spinner/ >
       );
   } else {
-    loading = (
+    mainContent = (
       <div>
       <StockCardContainer  stockData={this.state.stocks}/>
       <NewsArticlesContainer newsData={this.state.newsArticles} />
@@ -66,13 +85,15 @@ let loading = null;
 }
 
   return (
-    <div className={style.container}>
-      <Header />
-      <main className={style.mainContent}>
-        {loading}
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className={style.container}>
+        <Header searchStock={this.searchStock}/>
+        <main className={style.mainContent}>
+          {mainContent}
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

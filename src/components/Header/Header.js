@@ -8,14 +8,11 @@ const styleIcon = {
   marginRight: "10px"
 }
 
-const Header = () => {
+const Header = ({ searchStock }) => {
   return (
     <div className={style.header}>
-
-
-      <h1><i class="chart line icon" style={{marginRight: "10px"}}></i>Stock Market</h1>
-
-      <Form />
+      <h1><i className="chart line icon" style={{marginRight: "10px"}}></i>Stock Market</h1>
+      <Form searchStock={searchStock}/>
     </div>
   )
 

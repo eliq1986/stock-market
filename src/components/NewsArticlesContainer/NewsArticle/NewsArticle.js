@@ -16,7 +16,7 @@ const NewsArticle = (props) => {
 
   return (
     <div className={`centerText ${style.newsArticle}`}>
-      <img class={style.newsImage} src={urlToImage}/>
+      <img className={style.newsImage} src={urlToImage}/>
       <a href={url} target="_blank"><p>{title}</p></a>
      <p>{description}</p>
       {checkIfLastNewsArticle()}
