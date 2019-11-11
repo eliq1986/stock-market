@@ -7,9 +7,6 @@ class Form extends Component {
     value: ""
   }
 
-  onInputChange = (e) => {
-    this.setState({value: e.target.value})
-  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +17,11 @@ class Form extends Component {
   return (
     <form onSubmit={this.onSubmit}>
       <label htmlFor="search"></label>
-      <input pattern="[a-zA-Z]+" id="search" type="text" value={this.state.value} onChange={this.onInputChange} placeholder="Stock Index"/>
+      <input pattern="[a-zA-Z]+"
+      id="search" type="text"
+      value={this.state.value}
+      onChange={(e)=> this.setState({value: e.target.value})}
+       placeholder="Stock Index"/>
       <input type="submit" value="Submit"/>
     </form>
   );

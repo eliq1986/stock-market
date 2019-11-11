@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './StockCard.module.css';
 
-const StockCard = (props) => {
+const StockCard = ({ stock }) => {
 
-  const { price, symbol } = props.stock;
+  const { price, symbol, day_change } = stock;
 
-  const percentChange = props.stock.day_change.slice(0, 1);
+  const percentChange = day_change.slice(0, 1);
 
   if(percentChange === "-") {
     return (

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-// Container Components
+// stateful components
+import Form from './Form/Form';
+
+
+// functional components
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import Form from './Form/Form';
 
 // css
 import style from './App.module.css';
@@ -36,7 +39,7 @@ fetchApiData = async (apiUrl, apiKey) => {
 }
 
 // fetches search stock index
-getSearchData = async(stockIndex, ) => {
+getSearchData = async(stockIndex, stockApiKey) => {
   const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockIndex}&apikey=${stockApiKey}`)
   const data = response.json();
   return data;
@@ -45,21 +48,26 @@ getSearchData = async(stockIndex, ) => {
 
 
 searchStock = (stockIndex) => {
-  this.getSearchData(stockIndex).then( data=> {
+  this.getSearchData(stockIndex).then(data => {
+    if(data["Error Message"]) {
+      console.log("Please enter a valid stock index")
+    } else {
     console.log(data);
+    }
   })
+
 }
 
 
 componentDidMount() {
-
-  Promise.all([this.fetchApiData(stockApiURL, stockApiKey), this.fetchApiData(newsApiURL, newsApiKey)]).then( data => {
-    const [stocks, articles] = data;
-    this.setState({
-      stocks,
-      newsArticles: articles.articles.slice(0,6)
-    })
-  })
+  //
+  // Promise.all([this.fetchApiData(stockApiURL, stockApiKey), this.fetchApiData(newsApiURL, newsApiKey)]).then( data => {
+  //   const [stocks, articles] = data;
+  //   this.setState({
+  //     stocks,
+  //     newsArticles: articles.articles.slice(0,6)
+  //   })
+  // })
 
 }
 
@@ -85,7 +93,7 @@ let mainContent= null;
 }
 
   return (
-    <BrowserRouter>
+
       <div className={style.container}>
         <Header searchStock={this.searchStock}/>
         <main className={style.mainContent}>
@@ -93,7 +101,6 @@ let mainContent= null;
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
   );
 }
 
