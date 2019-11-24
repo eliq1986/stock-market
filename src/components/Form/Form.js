@@ -11,6 +11,8 @@ class Form extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.searchStock(this.state.value);
+    this.setState({value: ""})
+
   }
 
   render() {

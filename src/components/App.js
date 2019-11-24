@@ -51,7 +51,7 @@ getSearchData = async(stockIndex, stockApiKey) => {
 searchStock = (stockIndex) => {
   this.getSearchData(stockIndex).then(data => {
     if(data["Error Message"]) {
-      console.log("Please enter a valid stock index")
+      this.setState({searchedStock: null})
     } else {
      this.setState({searchedStock: data["Global Quote"]});
     }
