@@ -12,10 +12,11 @@ import Footer from './Footer/Footer';
 // css
 import style from './App.module.css';
 
-//
+// container components
 import Spinner from './Spinner/Spinner';
 import StockCardContainer from './StockCardContainer/StockCardContainer';
 import NewsArticlesContainer from './NewsArticlesContainer/NewsArticlesContainer';
+import SearchedStock from './SeachedStock/SearchedStock';
 
 
 import { stockApiKey, newsApiKey, searchApiKey } from '../config.js';
@@ -52,7 +53,7 @@ searchStock = (stockIndex) => {
     if(data["Error Message"]) {
       console.log("Please enter a valid stock index")
     } else {
-    console.log(data);
+     this.setState({searchedStock: data["Global Quote"]});
     }
   })
 
@@ -60,14 +61,14 @@ searchStock = (stockIndex) => {
 
 
 componentDidMount() {
-  //
-  // Promise.all([this.fetchApiData(stockApiURL, stockApiKey), this.fetchApiData(newsApiURL, newsApiKey)]).then( data => {
-  //   const [stocks, articles] = data;
-  //   this.setState({
-  //     stocks,
-  //     newsArticles: articles.articles.slice(0,6)
-  //   })
-  // })
+
+  Promise.all([this.fetchApiData(stockApiURL, stockApiKey), this.fetchApiData(newsApiURL, newsApiKey)]).then( data => {
+    const [stocks, articles] = data;
+    this.setState({
+      stocks,
+      newsArticles: articles.articles.slice(0,6)
+    })
+  })
 
 }
 
@@ -79,10 +80,18 @@ render() {
 let mainContent= null;
 
 
-  if(!this.state.stocks.length && !this.state.newsArticles.length ) {
+  if(!this.state.stocks.length && !this.state.newsArticles.length && !this.state.searchStock ) {
       mainContent = (
         <Spinner/ >
       );
+
+  } else if(this.state.searchedStock) {
+     mainContent = (
+       <div>
+       <SearchedStock  singleStockIndexData={this.state.searchedStock}/>
+       <NewsArticlesContainer newsData={this.state.newsArticles} />
+       </div>
+     );
   } else {
     mainContent = (
       <div>
