@@ -6,6 +6,7 @@
 
 .newsImage {
   width: 100%;
+
 }
 
 
@@ -16,4 +17,24 @@ hr {
 
 a[target] {
   padding: 1em;
+}
+
+
+@media (min-width: 900px) {
+  .newsArticle {
+    flex-grow: 1;
+    flex-basis: 400px;
+    margin: 15px;
+  }
+
+  .newsImage {
+    height: 300px;
+  }
+
+  .bottomBorder {
+    display: none;
+  }
+
+
+
 }

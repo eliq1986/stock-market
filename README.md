@@ -18,3 +18,7 @@ Built utilizing mobile first approach.
 
 ### Mobile Footer
 ![Screen Shot 2019-11-06 at 6 03 32 PM](https://user-images.githubusercontent.com/6277603/68354001-112b6980-00c0-11ea-9c16-ebb489ea5c66.png)
+
+
+### Desktop
+![Screen Shot 2019-12-02 at 1 46 13 PM](https://user-images.githubusercontent.com/6277603/69998367-06bb8e80-150b-11ea-8d0c-798e910620b1.png)

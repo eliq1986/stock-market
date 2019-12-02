@@ -10,7 +10,7 @@ const NewsArticle = ({ newsData, index }) => {
       if(index === 5) {
         return null;
       }
-      return <hr />
+      return <hr className={style.bottomBorder}/>
   }
 
 
