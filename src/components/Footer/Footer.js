@@ -9,7 +9,7 @@ const Footer = () => {
      <footer className={style.footer}>
      {webData.map(website=> <WebSiteLink key={website} website={website}/>)}
     </footer>
-  )
+  );
 }
 
 

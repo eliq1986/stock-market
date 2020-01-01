@@ -7,7 +7,7 @@ const StockCardContainer = (props) => {
 
   return (
     <div className={style.StockCardContainer}>
-    {props.stockData.data.map( stock => <StockCard key={stock.symbol} stock={stock} />)}
+    {data.map( stock => <StockCard key={stock.symbol} stock={stock} />)}
     </div>
   );
 }

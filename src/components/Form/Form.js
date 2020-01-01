@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './Form.module.css';
 
+
 class Form extends Component {
 
   state = {
@@ -17,7 +18,7 @@ class Form extends Component {
 
   render() {
   return (
-    <form onSubmit={this.onSubmit}>
+    <form onSubmit={this.onSubmit} className={style.form}>
       <label htmlFor="search"></label>
       <input pattern="[a-zA-Z]+"
       id="search" type="text"
@@ -29,5 +30,7 @@ class Form extends Component {
   );
 }
 }
+
+
 
 export default Form;

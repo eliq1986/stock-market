@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-
-// stateful components
-import Form from './Form/Form';
-
 
 // functional components
 import Header from './Header/Header';
@@ -19,8 +14,8 @@ import NewsArticlesContainer from './NewsArticlesContainer/NewsArticlesContainer
 import SearchedStock from './SeachedStock/SearchedStock';
 
 
-import { stockApiKey, newsApiKey, searchApiKey } from '../config.js';
-import {stockApiURL, newsApiURL, searchApiURL} from './api.js';
+import { stockApiKey, newsApiKey } from '../config.js';
+import {stockApiURL, newsApiURL } from './api.js';
 
 class App extends Component {
 

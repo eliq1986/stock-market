@@ -3,10 +3,6 @@ import style from './Header.module.css';
 
 import Form from '../Form/Form.js';
 
-const styleIcon = {
-  fontSize: "2em",
-  marginRight: "10px"
-}
 
 const Header = ({ searchStock }) => {
   return (
